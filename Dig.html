@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .clock-container {
+            text-align: center;
+            background: #1e1e1e; 
+            padding: 50px 80px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); 
+            border: 2px solid #ff0000; 
+        }
+        h1 {
+            font-size: 10vw; 
+            color: #ff0000;
+            letter-spacing: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.8); 
+            transition: transform 0.3s ease;
+        }
+        h1:hover {
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 12vw; 
+            }
+            .clock-container {
+                padding: 40px 60px; 
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 16vw;
+            }
+            .clock-container {
+                padding: 30px 50px;
+            }
+        }
+        @media (min-width: 1200px) {
+            h1 {
+                font-size: 6vw; 
+            }
+            .clock-container {
+                padding: 60px 100px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <h1 id="loading">00:00:00</h1>
+    </div>
+
+    <script>
+        function dig() {
+            const data = new Date();
+            document.getElementById("loading").innerText = data.toLocaleTimeString();
+        }
+        setInterval(dig, 1000);
+        dig();
+    </script>
+</body>
+</html>
